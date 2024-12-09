@@ -18,3 +18,6 @@ A nice little box with a tan background.
 
 **Random Encounters**
 These are a little tricky, but basically involve some custom links, that set a variable to the name of the destination the player wants to go to, and then they take them to a random encounter page. On the random encounter page, there are all the encounters you care to program, and a link to take them to the location listed on the variable.
+
+
+Download either the HTML or the Twee file, import it and start editing!
