@@ -1,0 +1,19 @@
+<div class="slidecontainer"> Guard AC:11 HP: <span id="guard1HPout">11</span><input type="range" min="0" max="11" value="11" class="slider" id="guard1HPin"></div>
+Guard Spear Attack (click-rerun: "Spear")[(random: 1,20)+3 to hit, (random: 1,6)+2 damage]
+
+
+<script>
+  function updateSliderOutput(slider) {
+    const outputId = slider.id.replace('in', 'out'); // Assuming output IDs are similar to input IDs with 'out' suffix
+    const output = document.getElementById(outputId);
+    output.textContent = slider.value;
+  }
+
+  document.addEventListener('input', (event) => {
+    if (event.target.classList.contains('slider')) {
+      updateSliderOutput(event.target);
+    }
+  });
+</script>
+
+<embed src="https://www.aidedd.org/dnd/monstres.php?vo=guard">
