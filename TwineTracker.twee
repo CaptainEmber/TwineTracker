@@ -1,0 +1,179 @@
+:: StoryTitle
+TwineTracker
+
+
+:: StoryData
+{
+  "ifid": "C875C639-10CB-4F24-9B75-6EEEDC83EC4D",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Entrance and Guardian",
+  "tag-colors": {
+    "startup": "green"
+  },
+  "zoom": 1
+}
+
+
+:: $goin2 {"position":"1425,100","size":"100,100"}
+
+
+
+:: Climax or Conflict {"position":"1300,250","size":"100,100"}
+<div id="aloud">"Muahaha! I am the biggest, baddest, evilest, guy!" says the guy from earlier. </div>
+
+<div class="slidecontainer"> Guard AC:11 HP: <span id="guard1HPout">11</span><input type="range" min="0" max="11" value="11" class="slider" id="guard1HPin"></div>
+Guard Spear Attack (click-rerun: "Spear")[(random: 1,20)+3 to hit, (random: 1,6)+2 damage]
+
+
+<script>
+  function updateSliderOutput(slider) {
+    const outputId = slider.id.replace('in', 'out'); // Assuming output IDs are similar to input IDs with 'out' suffix
+    const output = document.getElementById(outputId);
+    output.textContent = slider.value;
+  }
+
+  document.addEventListener('input', (event) => {
+    if (event.target.classList.contains('slider')) {
+      updateSliderOutput(event.target);
+    }
+  });
+</script>
+
+<embed src="https://www.aidedd.org/dnd/monstres.php?vo=guard">
+
+[[Reward, Revelation or Twist]]
+
+
+:: Entrance and Guardian {"position":"800,450","size":"100,100"}
+<div id="aloud">You were walking along one fine day, when suddenly you hear a rustle from a nearby bush... </div>
+
+A rabid guard leaps from a bush and attacks you!
+
+<div class="slidecontainer"> Guard AC:11 HP: <span id="guard1HPout">11</span><input type="range" min="0" max="11" value="11" class="slider" id="guard1HPin"></div>Guard Spear Attack (click-rerun: "Spear")[(random: 1,20)+3 to hit, (random: 1,6)+2 damage]
+
+[[Roleplay or Puzzle]]
+
+<script>
+  function updateSliderOutput(slider) {
+    const outputId = slider.id.replace('in', 'out'); // Assuming output IDs are similar to input IDs with 'out' suffix
+    const output = document.getElementById(outputId);
+    output.textContent = slider.value;
+  }
+
+  document.addEventListener('input', (event) => {
+    if (event.target.classList.contains('slider')) {
+      updateSliderOutput(event.target);
+    }
+  });
+</script>
+
+<embed src="https://www.aidedd.org/dnd/monstres.php?vo=guard">
+
+
+:: Fight Template {"position":"925,600","size":"100,100"}
+<div class="slidecontainer"> Guard AC:11 HP: <span id="guard1HPout">11</span><input type="range" min="0" max="11" value="11" class="slider" id="guard1HPin"></div>
+Guard Spear Attack (click-rerun: "Spear")[(random: 1,20)+3 to hit, (random: 1,6)+2 damage]
+
+
+<script>
+  function updateSliderOutput(slider) {
+    const outputId = slider.id.replace('in', 'out'); // Assuming output IDs are similar to input IDs with 'out' suffix
+    const output = document.getElementById(outputId);
+    output.textContent = slider.value;
+  }
+
+  document.addEventListener('input', (event) => {
+    if (event.target.classList.contains('slider')) {
+      updateSliderOutput(event.target);
+    }
+  });
+</script>
+
+<embed src="https://www.aidedd.org/dnd/monstres.php?vo=guard">
+
+
+:: Random Encounters {"position":"1250,100","size":"100,100"}
+(set:  $randenc to (random: 1,5))
+
+(if:$randenc is 1)[<div id="aloud">You see a big log across the road.</div> Athletics DC:5 to jump the log.](else-if:$randenc is 2)[<div id="aloud">An old lady is walking towards you on the road, but the trail isn't wide enough for both of you.</div> Do they make way, or keep walking? (click:"make way")[<div id="aloud">She says "Ah thank you deary!" and hands you a gold piece.</div>]](click:"keep walking")[<div id="aloud">She almost falls over on the ground, and points at you screeching " I have cursed one of your items!" but she won't say which one.</div>](else-if:$randenc is 3)[A light breeze blows at your back and you make good time.](else-if:$randenc is 4)[Make a dexterity save DC:12 On a fail, you catch your foot on a root and twist your ankle. taking one point of damage.](else:)[Nothing happens, and you arrive uneventfully!]
+
+[[Roll Again|Random Encounters]]
+[[Continue|$goin2]]
+
+
+:: Reward, Revelation or Twist {"position":"1400,450","size":"100,100"}
+<div id="aloud">As you clean the blood from your blade, the guard from earlier stumbles into the clearing. "What!? You have slain my identical twin brother! I swear one day I will have my vengeance on you!" He then throws a smokebomb at the ground and disappears.</div>
+
+The party finds a scrap of paper with the inscription 'Guardgang for life.' 
+
+Who knows what that means? [[Anyway...|The End]]
+
+
+:: Roleplay or Puzzle {"position":"900,250","size":"100,100"}
+<div id="aloud">You are completely lost. Fortunately, you see a goblin! Maybe this little green creature knows the way.</div>
+
+The party can try to Entertain (Performance DC 12) Threaten (Intimidation DC 15) or Persuade (Persuasion DC 16) the goblin to let you past. If all else fails you can bribe him with Gold.
+
+[[Once you know the way|Trick or Setback]]
+
+
+:: The End {"position":"1100,525","size":"100,100"}
+You make it home safe and sound. Something has changed. Your home is the same, but you are a different person now. You feel a nagging at the corner of your mind... a [[call to adventure.|Entrance and Guardian]]
+
+
+:: Trick or Setback {"position":"1100,200","size":"100,100"}
+Have the party make a perception check DC:10. On a success they feel like they are about to have some sort of (link: "Random Encounter")[(set: $goin2 to "Climax or Conflict")(goto: "Random Encounters")]
+
+
+:: startup [startup] {"position":"800,600","size":"100,100"}
+(set: $goin2 to "home")
+
+
+:: StoryStylesheet [stylesheet]
+embed {
+  width: 100%;
+  height: 600px;
+}
+
+#aloud {
+  	background-color: tan;
+    color: black;
+  	padding: 25px;
+  	border-style: double;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #808080;
+  cursor: pointer;
+}
